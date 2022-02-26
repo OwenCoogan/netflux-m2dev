@@ -4,5 +4,7 @@
 </script>
 
 <template>
+<div class="bg-black">
   <img alt="Vue logo" src="./assets/logo.png" />
+</div>
 </template>
