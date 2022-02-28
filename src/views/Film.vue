@@ -5,17 +5,25 @@
 
 <template>
 <div v-if="this.film !=null">
+
   <h2>{{this.film.name}}</h2>
-  <img :src="this.film.image.original" :alt="this.film.name">
+  <img :src="this.film.image.medium" :alt="this.film.name">
+  <p>{{this.film.summary}}</p>
+  <EpisodeList
+  :episodes="this.episodes"
+  />
 </div>
 </template>
 <script>
+import EpisodeList from '../components/Episodes/EpisodeList.vue'
 export default {
   components:{
+    EpisodeList
   },
   data() {
     return {
       film : null,
+      episodes:null
     }
   },
   mounted () {
@@ -26,7 +34,13 @@ export default {
       const res = await fetch(`https://api.tvmaze.com/shows/${this.$route.params.id}`);
       const data = await res.json();
       this.film = data;
-      console.log(this.film)
+      this.getEpisodes();
+    },
+    async getEpisodes(){
+      const res = await fetch(`https://api.tvmaze.com/shows/${this.$route.params.id}/episodes`);
+      const data = await res.json();
+      this.episodes = data;
+      console.log(this.episodes)
     }
   },
   setup() {

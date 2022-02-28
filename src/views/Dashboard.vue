@@ -10,7 +10,8 @@
 </template>
 <script>
 import FilmList from '../components/Films/FilmList.vue';
-import {useMoviesStore} from '../stores/movies'
+import {useMoviesStore} from '../stores/movies';
+const movies = useMoviesStore()
 export default {
   components:{
     FilmList
@@ -25,10 +26,8 @@ export default {
   },
   methods:{
     async getFilms(){
-      const res = await fetch('https://api.tvmaze.com/shows?page=1');
-      const data = await res.json();
-      this.filmList = data;
-      console.log(this.filmList);
+      await movies.getFilms()
+      .then(response => this.filmList = movies.films)
     }
   },
   setup() {

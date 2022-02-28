@@ -7,7 +7,8 @@
 
 <style>
 #app {
-  background-color:black;
+  background-color:#000000;
   text-align: center;
+  color:white;
 }
 </style>
