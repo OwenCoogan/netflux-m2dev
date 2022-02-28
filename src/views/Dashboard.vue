@@ -5,7 +5,7 @@
 
 <template>
 <div class="bg-black">
-  <FilmList/>
+  <FilmList :filmList="filmList" />
 </div>
 </template>
 <script>
@@ -13,6 +13,22 @@ import FilmList from '../components/Films/FilmList.vue'
 export default {
   components:{
     FilmList
+  },
+  data() {
+    return {
+      filmList : null,
+    }
+  },
+  mounted () {
+      this.getFilms();
+  },
+  methods:{
+    async getFilms(){
+      const res = await fetch('https://api.tvmaze.com/shows?page=1');
+      const data = await res.json();
+      this.filmList = data;
+      console.log(this.filmList);
+    }
   },
   setup() {
 

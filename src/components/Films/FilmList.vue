@@ -1,14 +1,19 @@
 <template>
   <section>
-    <artcle class="film-card">
-      <FilmCard/>
-    </artcle>
+      <div v-for="film in filmList" :key="film.ame">
+      <FilmCard
+      :title='film.name'
+      />
+    </div>
+
   </section>
 </template>
 <script>
 import  FilmCard from '../Films/FilmCard.vue'
 export default {
-  props: ['title', 'message'],
+  props:{
+    filmList: Array
+  },
   components:{
     FilmCard
   },
