@@ -1,6 +1,6 @@
 <template>
   <section>
-      <div v-for="episode in episodes" :key="episode.name" class="w-1/6">
+      <div v-for="episode in episodes" :key="episode.name">
       <EpisodeCard
       :title='episode.name'
       :image='episode.image?.medium'
