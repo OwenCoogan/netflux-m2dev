@@ -1,8 +1,10 @@
 <template>
   <section>
-      <div v-for="film in filmList" :key="film.ame">
+      <div v-for="film in filmList" :key="film.name" class="w-1/6">
       <FilmCard
       :title='film.name'
+      :image='film.image?.medium'
+      :id='film.id'
       />
     </div>
 
