@@ -5,6 +5,17 @@
 
 <template>
 <div class="bg-black">
-  <img alt="Vue logo" src="./assets/logo.png" />
+  <FilmList/>
 </div>
 </template>
+<script>
+import FilmList from '../components/Films/FilmList.vue'
+export default {
+  components:{
+    FilmList
+  },
+  setup() {
+
+  },
+}
+</script>
