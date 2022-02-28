@@ -4,12 +4,13 @@
 </script>
 
 <template>
-<div class="bg-black">
+<div>
   <FilmList :filmList="filmList" />
 </div>
 </template>
 <script>
-import FilmList from '../components/Films/FilmList.vue'
+import FilmList from '../components/Films/FilmList.vue';
+import {useMoviesStore} from '../stores/movies'
 export default {
   components:{
     FilmList
