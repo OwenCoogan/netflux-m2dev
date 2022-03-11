@@ -19,8 +19,10 @@
           </p>
         </div>
         <p>
-          {{this.episodesinf.season}} seasons - {{this.episodesinf.number}} episodes
+          {{this.episodesinf.season}} seasons 
         </p>
+        <span v-if="this.episodesinf.number !=null"> - </span>
+        <p v-if="this.episodesinf.number !=null">{{this.episodesinf.number}} episodes </p>
         <div>
           <h4 class="text-2xl py-5 text-left font-bold py-1.5">Summary :</h4>
           {{this.film.summary}} 
