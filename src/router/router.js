@@ -18,6 +18,13 @@ const routes = [
     component: () => import('../views/Episode.vue'),
     props: true,
   }
+  ,
+  {
+    path: '/search/:query',
+    name: 'Search',
+    component: () => import('../views/Search.vue'),
+    props: true,
+  }
 ]
 
 const router = createRouter({
