@@ -1,7 +1,7 @@
 <template>
     <router-link :to="'/media/'+id">
-      <article class="bg-cover bg-no-repeat h-auto p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" v-bind:style="{'min-height': '415px' , 'background-image': 'url(' + image + ')' }">
-        <h2>{{title}}</h2>
+      <article class="bg-cover bg-no-repeat bg-white rounded-lg border-gray-200" v-bind:style="{'min-height': '255px' , 'background-image': 'url(' + image + ')' }">
+        <h2 class="font-sans text-lg font-bold bg-red-600 rounded-t-lg py-1.5">{{title}}</h2>
       </article>
     </router-link>
 </template>

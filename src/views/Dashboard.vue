@@ -5,6 +5,7 @@
 
 <template>
 <div class="container mx-auto">
+  <NavBar />
   <FilmList :filmList="filmList" />
 </div>
 
@@ -12,11 +13,13 @@
 
 <script>
 import FilmList from '../components/Films/FilmList.vue';
+import NavBar from '../components/NavBar.vue';
 import {useMoviesStore} from '../stores/movies';
 const movies = useMoviesStore()
 export default {
   components:{
-    FilmList
+    FilmList,
+    NavBar
   },
   data() {
     return {
