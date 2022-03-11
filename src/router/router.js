@@ -7,9 +7,16 @@ const routes = [
     component: () => import('../views/Dashboard.vue')
   },
   {
-    path: '/media/:id',
-    name: 'Media',
-    component: () => import('../views/Film.vue')
+    path: '/show/:id',
+    name: 'Show',
+    component: () => import('../views/Film.vue'),
+    props: true,
+  },
+  {
+    path: '/show/:id/episode/:id_episode',
+    name: 'Episode',
+    component: () => import('../views/Episode.vue'),
+    props: true,
   }
 ]
 

@@ -6,7 +6,7 @@
 </template>
 
 <style>
-#app {
+html {
   background-color:#000000;
   text-align: center;
   color:white;
