@@ -1,9 +1,9 @@
 <template>
-      <article class="flex mx-24 my-24">
-        <img :src="image" class="w-1/3"/>
-        <div class="w-2/3">
-        <h2>Episode Name : {{title}}</h2>
-        </div>
+      <article class="bg-cover bg-no-repeat bg-white rounded-lg border-gray-200"
+      v-bind:style="{'min-height': '155px' , 'background-image': 'url(' + image + ')' }">
+        <h4 class="font-sans text-sm text-center font-bold bg-red-600 rounded-t-lg py-1.5">
+          {{title}}
+        </h4>
       </article>
 </template>
 <script>

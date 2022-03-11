@@ -4,26 +4,46 @@
 </script>
 
 <template>
-<div v-if="this.film !=null">
-
-  <h2>{{this.film.name}}</h2>
-  <img :src="this.film.image.medium" :alt="this.film.name">
-  <p>{{this.film.summary}}</p>
-  <EpisodeList
-  :episodes="this.episodes"
-  />
+<div v-if="this.film !=null" class="container mx-auto">
+  <NavBar />
+  <div class="grid grid-cols-3 gap-10 flex flex-row">
+    <div>
+      <img :src="this.film.image.original" :alt="this.film.name">
+    </div>
+    <div class="flex flex-col col-span-2">  
+      <h2 class="text-5xl font-bold pb-14" >{{this.film.name}}</h2>
+      <div class="text-left">
+        <div class="flex flex-row gap-10">
+          <p v-for="genre in this.film.genres" :key="genre.name" class="text-xl py-5">
+            {{genre}}
+          </p>
+        </div>
+        <p>
+          {{this.episodesinf.season}} seasons - {{this.episodesinf.number}} episodes
+        </p>
+        <div>
+          <h4 class="text-2xl py-5 text-left font-bold py-1.5">Summary :</h4>
+          {{this.film.summary}} 
+        </div>
+      </div>
+    </div>
+  </div>
+  <EpisodeList  :episodes="this.episodes"  />
 </div>
 </template>
 <script>
 import EpisodeList from '../components/Episodes/EpisodeList.vue'
+import NavBar from '../components/NavBar.vue';
 export default {
   components:{
-    EpisodeList
+    EpisodeList,
+    NavBar
   },
   data() {
     return {
       film : null,
-      episodes:null
+      episodes:null,
+      episodesinf:null
     }
   },
   mounted () {
@@ -34,6 +54,7 @@ export default {
       const res = await fetch(`https://api.tvmaze.com/shows/${this.$route.params.id}`);
       const data = await res.json();
       this.film = data;
+      this.getEpisodesInfos();
       this.getEpisodes();
     },
     async getEpisodes(){
@@ -41,6 +62,12 @@ export default {
       const data = await res.json();
       this.episodes = data;
       console.log(this.episodes)
+    },
+    async getEpisodesInfos(){
+      const res = await fetch(`${this.film._links.previousepisode.href}`);
+      const data = await res.json();
+      this.episodesinf = data;
+      console.log(this.episodesinf)
     }
   },
   setup() {
