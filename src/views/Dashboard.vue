@@ -4,10 +4,12 @@
 </script>
 
 <template>
-<div>
+<div class="container mx-auto">
   <FilmList :filmList="filmList" />
 </div>
+
 </template>
+
 <script>
 import FilmList from '../components/Films/FilmList.vue';
 import {useMoviesStore} from '../stores/movies';
