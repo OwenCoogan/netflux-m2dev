@@ -1,12 +1,15 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-</script>
-
 <template>
 <div class="container mx-auto">
   <NavBar />
-  <FilmList :filmList="filmList" />
+    <div v-if="loading===false">
+      <RandomEpisodeHeader
+          v-if="randomFilm"
+          :title='randomFilm.name'
+          :image='randomFilm.image?.medium'
+          :id='randomFilm.id'
+      />
+      <FilmList :filmList="filmList" />
+    </div>
 </div>
 
 </template>
@@ -14,16 +17,21 @@
 <script>
 import FilmList from '../components/Films/FilmList.vue';
 import NavBar from '../components/NavBar.vue';
+import RandomEpisodeHeader from '../components/Films/RandomEpisodeHeader.vue'
 import {useMoviesStore} from '../stores/movies';
 const movies = useMoviesStore()
 export default {
   components:{
     FilmList,
-    NavBar
+    NavBar,
+    RandomEpisodeHeader
   },
   data() {
     return {
       filmList : null,
+      randomFilm:null,
+      searchResults:null,
+      loading:true
     }
   },
   mounted () {
@@ -32,11 +40,12 @@ export default {
   methods:{
     async getFilms(){
       await movies.getFilms()
-      .then(response => this.filmList = movies.films)
+      .then( res => this.filmList = movies.films)
+      .then( res => this.randomFilm = movies.films[Math.floor(Math.random() * movies.films.length)])
+      .then(this.loading = false)
     }
   },
   setup() {
-
   },
 }
 </script>
