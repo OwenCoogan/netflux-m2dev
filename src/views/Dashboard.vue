@@ -1,6 +1,5 @@
 <template>
 <div class="container mx-auto">
-  <NavBar />
     <div v-if="loading===false">
       <RandomEpisodeHeader
           v-if="randomFilm"

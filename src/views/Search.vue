@@ -1,6 +1,5 @@
 <template>
 <div class="container mx-auto">
-  <NavBar />
   <FilmList :filmList="filmList" />
 </div>
 </template>
