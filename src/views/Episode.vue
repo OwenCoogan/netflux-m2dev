@@ -17,7 +17,7 @@
         </p>
         <div class="pb-14">
           <h4 class="text-2xl py-5 text-left font-bold py-1.5">Summary :</h4>
-          {{this.episode.summary}}
+          {{parseText(this.episode.summary)}}
         </div>
       </div>
     </div>
@@ -26,6 +26,7 @@
 </template>
 <script>
 import NavBar from '../components/NavBar.vue';
+import { parseText } from '../utilities/parser'
 export default {
   components:{
     NavBar
@@ -39,6 +40,9 @@ export default {
     this.getEpisodes()
   },
   methods:{
+    parseText(){
+      parseText()
+    },
     async getEpisodes(){
       const res = await fetch(`https://api.tvmaze.com/shows/${this.$route.params.id}/episodes`);
       const data = await res.json();

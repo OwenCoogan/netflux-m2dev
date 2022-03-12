@@ -1,11 +1,17 @@
 <template>
-    <router-link :to="'/show/'+id">
-      <article @mouseover="this.displayedInfo = true" @mouseleave="this.displayedInfo = false" class="bg-cover bg-no-repeat bg-white rounded-lg border-gray-200" v-bind:style="{'min-height': '255px' , 'background-image': 'url(' + image + ')' }">
-        <div v-if="this.displayedInfo ===true" class="bg-black h-28">
+    <router-link :to="'/show/'+id" class="mx-16">
+      <article
+        @mouseover="this.displayedInfo = true"
+        @mouseleave="this.displayedInfo = false"
+        class="bg-cover relative bg-no-repeat bg-white rounded-lg border-gray-200 w-3/4 h/3/4 hover:w-full hover:h-full m-auto"
+        v-bind:style="{'min-height': '255px' , 'background-image': 'url(' + image + ')' }"
+      >
+        <div
+        v-if="this.displayedInfo ===true" class="bg-black h-28 absolute w-full bottom-0 left-0 text-center">
           <h2 class="font-sans text-lg font-bol rounded-t-lg py-1.5">{{title}}</h2>
           <div class="flex">
             <!--  Button List -->
-          </div>
+        </div>
         </div>
       </article>
     </router-link>

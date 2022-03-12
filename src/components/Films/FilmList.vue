@@ -1,5 +1,5 @@
 <template>
-  <section v-if="this.$route.name!='Search'" class="grid grid-cols-7 gap-4">
+  <section v-if="this.$route.name!='Search'" class="grid grid-cols-4 gap-4">
       <div v-for="film in filmList" :key="film.name" >
       <FilmCard
       :title='film.name'
@@ -8,7 +8,7 @@
       />
     </div>
   </section>
-  <section v-else class="grid grid-cols-7 gap-4">
+  <section v-else class="grid grid-cols-4 gap-4">
     <div v-for="film in filmList" :key="film.show.name" >
       <FilmCard
       :title='film.show.name'

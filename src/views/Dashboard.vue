@@ -7,7 +7,7 @@
           :image='randomFilm.image?.original'
           :id='randomFilm.id'
       />
-      <FilmList v-for="genre in filmList" :filmList="genre" />
+      <FilmList v-for="genre in filmList" :filmList="genre" v-bind:key="genre.name" />
     </div>
 </div>
 
