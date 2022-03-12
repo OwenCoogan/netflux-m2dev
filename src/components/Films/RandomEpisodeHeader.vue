@@ -3,7 +3,9 @@
         <div class="absolute left-10 bottom-20 w-1/3 max-h-max text-left ">
           <h2 class="font-sans text-lg font-bold rounded-t-lg py-1.5 m-8">{{title}}</h2>
           <div class="flex">
-            <ReadButton/>
+            <ReadButton
+              :title="title"
+            />
             <InfoButton :id="id"/>
           </div>
         </div>
