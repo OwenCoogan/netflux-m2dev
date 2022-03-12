@@ -14,6 +14,7 @@
       :title='film.show.name'
       :image='film.show.image?.medium'
       :id='film.show.id'
+      :seasons='film.show.season'
       />
     </div>
   </section>

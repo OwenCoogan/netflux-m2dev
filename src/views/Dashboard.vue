@@ -1,14 +1,13 @@
 <template>
 <div class="container mx-auto">
-  <NavBar />
     <div v-if="loading===false">
       <RandomEpisodeHeader
           v-if="randomFilm"
           :title='randomFilm.name'
-          :image='randomFilm.image?.medium'
+          :image='randomFilm.image?.original'
           :id='randomFilm.id'
       />
-      <FilmList :filmList="filmList" />
+      <FilmList v-for="genre in filmList" :filmList="genre" />
     </div>
 </div>
 
@@ -28,7 +27,7 @@ export default {
   },
   data() {
     return {
-      filmList : null,
+      filmList : Array,
       randomFilm:null,
       searchResults:null,
       loading:true
@@ -40,7 +39,11 @@ export default {
   methods:{
     async getFilms(){
       await movies.getFilms()
-      .then( res => this.filmList = movies.films)
+      .then( res => this.filmList = [
+        movies.films,
+        movies.Comedy,
+        movies.ScienceFiction
+      ])
       .then( res => this.randomFilm = movies.films[Math.floor(Math.random() * movies.films.length)])
       .then(this.loading = false)
     }

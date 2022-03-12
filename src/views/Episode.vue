@@ -5,20 +5,19 @@
 
 <template>
 <div v-if="this.episode !=null" class="container mx-auto">
-  <NavBar />
   <div class="grid gap-10 flex flex-col justify-items-center">
     <div>
       <img :src="this.episode.image.original" :alt="this.episode.name">
     </div>
-    <div class="flex flex-col">  
+    <div class="flex flex-col">
       <h2 class="text-5xl font-bold pb-14" >{{this.episode.name}}</h2>
       <div class="text-left">
         <p>
-          Episode : {{this.episode.number}}  / Season : {{this.episode.season}} 
+          Episode : {{this.episode.number}}  / Season : {{this.episode.season}}
         </p>
         <div class="pb-14">
           <h4 class="text-2xl py-5 text-left font-bold py-1.5">Summary :</h4>
-          {{this.episode.summary}} 
+          {{this.episode.summary}}
         </div>
       </div>
     </div>
@@ -49,7 +48,6 @@ export default {
             }
 
         });
-        console.log(this.episode);
     }
   },
   setup() {
