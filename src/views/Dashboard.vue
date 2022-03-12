@@ -4,7 +4,7 @@
       <RandomEpisodeHeader
           v-if="randomFilm"
           :title='randomFilm.name'
-          :image='randomFilm.image?.medium'
+          :image='randomFilm.image?.original'
           :id='randomFilm.id'
       />
       <FilmList :filmList="filmList" />

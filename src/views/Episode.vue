@@ -48,7 +48,6 @@ export default {
             }
 
         });
-        console.log(this.episode);
     }
   },
   setup() {
