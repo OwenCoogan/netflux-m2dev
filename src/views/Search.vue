@@ -26,7 +26,6 @@ export default {
       const res = await fetch(`https://api.tvmaze.com/search/shows?q=${this.$route.params.query}`);
       const data = await res.json();
       this.filmList = data;
-      console.log(this.filmList)
     }
   },
   setup() {

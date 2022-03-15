@@ -45,10 +45,9 @@ export default {
       if (!this.awaitingSearch) {
           setTimeout(() => {
             this.awaitingSearch = false;
-            console.log(query)
             this.$router.push({path: `/search/${query}`});
             this.loading = false
-          }, 1); // 1 sec delay
+          }, 1);
         }
       this.awaitingSearch = true;
     },

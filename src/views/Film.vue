@@ -57,13 +57,11 @@ export default {
       const res = await fetch(`https://api.tvmaze.com/shows/${this.$route.params.id}/episodes`);
       const data = await res.json();
       this.episodes = data;
-      console.log(this.episodes)
     },
     async getEpisodesInfos(){
       const res = await fetch(`${this.film._links.previousepisode.href}`);
       const data = await res.json();
       this.episodesinf = data;
-      console.log(this.episodesinf)
     }
   },
   setup() {
