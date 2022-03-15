@@ -17,7 +17,7 @@
         </p>
         <div class="pb-14">
           <h4 class="text-2xl py-5 text-left font-bold py-1.5">Summary :</h4>
-          {{parseText(this.episode.summary)}}
+          {{this.episode.summary}}
         </div>
       </div>
     </div>
@@ -40,8 +40,8 @@ export default {
     this.getEpisodes()
   },
   methods:{
-    parseText(){
-      parseText()
+    parseText(text){
+      parseText(text)
     },
     async getEpisodes(){
       const res = await fetch(`https://api.tvmaze.com/shows/${this.$route.params.id}/episodes`);

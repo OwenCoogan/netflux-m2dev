@@ -1,4 +1,4 @@
 export function parseText(text){
-  let parsedText = text.replace(/<\/?[^>]+(>|$)/g, "");
+  const parsedText = text.replace(/<\/?[^>]+(>|$)/g, "");
   return parsedText
 }
