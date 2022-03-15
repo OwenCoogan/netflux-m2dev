@@ -4,9 +4,8 @@
     <div v-if="this.loading===false && filmList && !searchResults">
     <RandomEpisodeHeader
         v-if="randomFilm"
-        :title='randomFilm.name'
-        :image='randomFilm.image?.original'
-        :id='randomFilm.id'
+        :film='randomFilm'
+        v-bind="randomFilm"
     />
       <FilmList v-for="genre in filmList" :filmList="genre" v-bind:key="genre.name" />
     </div>
@@ -41,7 +40,6 @@ export default {
   mounted () {
       this.getFilms();
       this.scrollDetection();
-      movies.$subscribe()
   },
   methods:{
     async getFilms(){
@@ -65,6 +63,9 @@ export default {
 }
   },
   setup() {
+      movies.$subscribe((state,callback) => {
+        console.log(state)
+      })
   },
 }
 </script>

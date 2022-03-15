@@ -1,12 +1,18 @@
 <template>
-      <article class="relative bg-center bg-auto bg-no-repeat h-screen bg-black rounded-lg border-gray-200" v-bind:style="{'min-height': '255px' , 'background-image': 'url(' + image + ')' }">
+      <article class="relative bg-center bg-auto bg-no-repeat h-screen bg-black rounded-lg border-gray-200" v-bind:style="{'min-height': '255px' , 'background-image': 'url(' + film.image.original + ')' }">
         <div class="absolute left-10 bottom-20 w-1/3 max-h-max text-left ">
-          <h2 class="font-sans text-lg font-bold rounded-t-lg py-1.5 m-8">{{title}}</h2>
+          <h2 class="font-sans text-7xl font-bold rounded-t-lg py-1.5 m-8">{{film.name}}</h2>
           <div class="flex">
             <ReadButton
-              :title="title"
+            class="min-width--button"
+              :title="film.name"
             />
-            <InfoButton :id="id"/>
+            <InfoButton
+            class="min-width--button"
+            :id="film.id"/>
+            <AddToFavorites
+            class="min-width--button"
+            :film="film"/>
           </div>
         </div>
       </article>
@@ -14,12 +20,14 @@
 <script>
 import InfoButton from '../UI/InfoLink.vue'
 import ReadButton from '../UI/ReadLink.vue'
+import AddToFavorites from '../UI/AddToFavorites.vue'
 export default {
   components:{
     InfoButton,
-    ReadButton
+    ReadButton,
+    AddToFavorites
   },
-  props: ['title','image','id'],
+  props: ['film'],
 }
 </script>
 

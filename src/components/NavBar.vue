@@ -33,10 +33,6 @@ export default {
       loading:false
     }
   },
-  setup() {
-    const movies = useMoviesStore();
-    return movies
-  },
   mounted () {
   },
   methods:{
@@ -47,7 +43,7 @@ export default {
             this.awaitingSearch = false;
             this.$router.push({path: `/search/${query}`});
             this.loading = false
-          }, 1);
+          }, 1); // 1 sec delay
         }
       this.awaitingSearch = true;
     },

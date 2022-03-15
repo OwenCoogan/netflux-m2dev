@@ -11,3 +11,7 @@
   text-transform: uppercase;
   font-family: 'Bebas Neue', cursive;
 }
+
+.min-width--button{
+  min-width:125px
+}

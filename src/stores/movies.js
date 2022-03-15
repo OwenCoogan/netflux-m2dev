@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia'
-let fallbackUrl = 'https://api.tvmaze.com/shows?page=1'
+
 
 export const useMoviesStore = defineStore({
   id: 'movies',
   state: () => ({
-    searchIndex:2,
+    searchIndex:1,
     films: Array,
     Comedy: Array,
     ScienceFiction:Array,
@@ -17,9 +17,7 @@ export const useMoviesStore = defineStore({
       this.searchIndex++
       this.getFilms(`https://api.tvmaze.com/shows?page=${this.searchIndex}`)
     },
-    $subscribe(state){
-      return state
-    },
+
     sortFilms(films){
       const sortedFilms = [];
       const Comedy = [];
@@ -44,7 +42,7 @@ export const useMoviesStore = defineStore({
       return this.films,this.Comedy,this.ScienceFiction
     },
     async getFilms(url){
-      const res = await fetch( url ? url : fallbackUrl );
+      const res = await fetch( url ? url : 'https://api.tvmaze.com/shows?page=1' );
       const data = await res.json();
       this.films = this.sortFilms(data);
     },
@@ -52,6 +50,11 @@ export const useMoviesStore = defineStore({
       const res = await fetch( 'https://api.tvmaze.com/search/shows?q='+query);
       const data = await res.json();
       this.searchedfilms = data;
+      return this.searchedfilms
+    },
+    async addToFavorites(film){
+      this.favorites.push(film)
+      return this.favorites
     },
   },
   getters:{
