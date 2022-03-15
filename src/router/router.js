@@ -25,6 +25,16 @@ const routes = [
     component: () => import('../views/Search.vue'),
     props: true,
   }
+  ,
+  {
+    path: '/search',
+    name: 'Search Empty',
+    redirect: to => {
+      // the function receives the target route as the argument
+      // we return a redirect path/location here.
+      return { path: '/'}
+    },
+  }
 ]
 
 const router = createRouter({

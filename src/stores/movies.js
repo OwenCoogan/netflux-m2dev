@@ -4,7 +4,7 @@ let fallbackUrl = 'https://api.tvmaze.com/shows?page=1'
 export const useMoviesStore = defineStore({
   id: 'movies',
   state: () => ({
-    searchIndex:1,
+    searchIndex:2,
     films: Array,
     Comedy: Array,
     ScienceFiction:Array,
@@ -15,18 +15,15 @@ export const useMoviesStore = defineStore({
   actions:{
     incrementPage(){
       this.searchIndex++
-      this.getFilms(`'https://api.tvmaze.com/shows?page=${this.searchIndex}`)
+      this.getFilms(`https://api.tvmaze.com/shows?page=${this.searchIndex}`)
+    },
+    $subscribe(state){
+      return state
     },
     sortFilms(films){
-      const sortedFilms = [
-
-      ];
-      const Comedy = [
-
-      ];
-      const ScienceFiction = [
-
-      ];
+      const sortedFilms = [];
+      const Comedy = [];
+      const ScienceFiction = [];
       films.forEach(film => {
         film.genres.forEach(genre => {
           switch (genre) {
@@ -36,12 +33,14 @@ export const useMoviesStore = defineStore({
             case "Science-Fiction":
               ScienceFiction.push(film)
               break;
+            default:
+              sortedFilms.push(film)
           }
         });
       });
-      this.films =sortedFilms
-      this.Comedy=Comedy
-      this.ScienceFiction=ScienceFiction
+      this.films = sortedFilms
+      this.Comedy = Comedy
+      this.ScienceFiction = ScienceFiction
       return this.films,this.Comedy,this.ScienceFiction
     },
     async getFilms(url){
@@ -50,10 +49,15 @@ export const useMoviesStore = defineStore({
       this.films = this.sortFilms(data);
     },
     async searchForFilm(query){
-      const res = await fetch( 'https://api.tvmaze.com/search/shows?q='+query );
+      const res = await fetch( 'https://api.tvmaze.com/search/shows?q='+query);
       const data = await res.json();
       this.searchedfilms = data;
       console.log(this.searchedfilms)
-    }
+    },
   },
+  getters:{
+    ReturnSearchResults() {
+      return this.searchedfilms
+    }
+  }
 })

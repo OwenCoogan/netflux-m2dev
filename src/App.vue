@@ -10,7 +10,6 @@ export default {
     NavBar
   },
   setup() {
-
   },
 }
 </script>

@@ -1,5 +1,7 @@
 <template>
 <div class="container mx-auto">
+  <h1>Search Results</h1>
+  <h2 v-if="filmList ===null">No results :(</h2>
   <FilmList :filmList="filmList" />
 </div>
 </template>
@@ -24,6 +26,7 @@ export default {
       const res = await fetch(`https://api.tvmaze.com/search/shows?q=${this.$route.params.query}`);
       const data = await res.json();
       this.filmList = data;
+      console.log(this.filmList)
     }
   },
   setup() {
