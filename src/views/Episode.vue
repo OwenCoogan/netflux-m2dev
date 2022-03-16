@@ -5,18 +5,18 @@
 
 <template>
 <div v-if="this.episode !=null" class="container mx-auto pt-20">
-  <div class="grid gap-10 flex flex-col justify-items-center">
+  <div class="grid grid-cols-3 gap-10 flex-row">
     <div>
-      <img :src="this.episode.image.original" :alt="this.episode.name">
+      <img :src="this.episode.image.original" :style="{'height': '30vh'}" :alt="this.episode.name">
     </div>
-    <div class="flex flex-col">
+    <div class="flex flex-col col-span-2 pt-4">
       <h2 class="text-5xl font-bold pb-14" >{{this.episode.name}}</h2>
       <div class="text-left">
         <p>
           Episode : {{this.episode.number}}  / Season : {{this.episode.season}}
         </p>
-        <div class="pb-14">
-          <h4 class="text-2xl py-5 text-left font-bold py-1.5">Summary :</h4>
+        <div>
+          <h4 class="text-2xl text-left font-bold py-2.5 pt-6">Summary :</h4>
           {{this.episode.summary}}
         </div>
       </div>
