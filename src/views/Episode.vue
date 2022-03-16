@@ -4,7 +4,7 @@
 </script>
 
 <template>
-<div v-if="this.episode !=null" class="container mx-auto">
+<div v-if="this.episode !=null" class="container mx-auto pt-20">
   <div class="grid gap-10 flex flex-col justify-items-center">
     <div>
       <img :src="this.episode.image.original" :alt="this.episode.name">
@@ -22,18 +22,22 @@
       </div>
     </div>
   </div>
+  <!--<EpisodeList  :episodes="this.episodes"  />-->
 </div>
 </template>
 <script>
+import EpisodeList from '../components/Episodes/EpisodeList.vue'
 import NavBar from '../components/NavBar.vue';
 import { parseText } from '../utilities/parser'
 export default {
   components:{
+    EpisodeList,
     NavBar
   },
   data() {
     return {
-      episode : null
+      episode : null,
+      episodes:null,
     }
   },
   mounted () {
@@ -46,6 +50,7 @@ export default {
     async getEpisodes(){
       const res = await fetch(`https://api.tvmaze.com/shows/${this.$route.params.id}/episodes`);
       const data = await res.json();
+      this.episodes = data;
         data.forEach(episodes => {
             if (episodes.id == this.$route.params.id_episode){
                 this.episode = episodes;
