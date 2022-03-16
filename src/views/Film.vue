@@ -24,16 +24,19 @@
       </div>
     </div>
   </div>
+  <CommentForm :film="this.film"/>
   <EpisodeList  :episodes="this.episodes"  />
 </div>
 </template>
 <script>
 import EpisodeList from '../components/Episodes/EpisodeList.vue'
 import NavBar from '../components/NavBar.vue';
+import CommentForm from "../components/UI/forms/CommentForm.vue"
 export default {
   components:{
     EpisodeList,
-    NavBar
+    NavBar,
+    CommentForm
   },
   data() {
     return {
