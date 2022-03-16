@@ -7,8 +7,8 @@
         v-bind:style="{'min-height': '255px' , 'background-image': 'url(' + image + ')' }"
       >
         <div
-        v-if="this.displayedInfo ===true" class="bg-black h-28 absolute w-full bottom-0 left-0 text-center">
-          <h2 class="font-sans text-lg font-bol rounded-t-lg py-1.5">{{title}}</h2>
+        v-if="this.displayedInfo ===true" class="bg-red-700 h-14 absolute w-full bottom-0 left-0 text-center rounded-b-lg">
+          <h2 class="font-sans text-xl font-bol  py-3">{{title}}</h2>
           <div class="flex">
             <!--  Button List -->
         </div>

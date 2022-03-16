@@ -1,5 +1,5 @@
 <template>
-<div class="container mx-auto">
+<div class="container mx-auto pt-20">
     <Loader v-if="this.loading ===true"/>
     <div v-if="this.loading===false && filmList && !searchResults">
     <RandomEpisodeHeader
