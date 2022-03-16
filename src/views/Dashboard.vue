@@ -40,32 +40,42 @@ export default {
   mounted () {
       this.getFilms();
       this.scrollDetection();
+      movies.$subscribe((mutation) => {
+        this.updateFilmList(mutation.payload);
+      })
   },
   methods:{
     async getFilms(){
       await movies.getFilms()
-      .then( res => this.filmList = [
-        movies.films,
-        movies.Comedy,
-        movies.ScienceFiction
-      ])
+      .then( res => this.updateFilmList())
       .then( res => this.randomFilm = movies.films[Math.floor(Math.random() * movies.films.length)])
       .then(this.loading = false)
     },
     scrollDetection () {
       window.onscroll = () => {
         let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
-        if (bottomOfWindow) {
+        if (bottomOfWindow && this.$route.path ==="/") {
+        this.loading = true;
         movies.incrementPage()
-        window.scrollTo(0,0)
+        setTimeout(() => {
+        window.scrollTo(0, 0);
+        this.loading = false;
+        }, 2000);
         }
+      }
+    },
+    async updateFilmList(){
+        console.log()
+        this.filmList = [
+        movies.films,
+        movies.Comedy,
+        movies.ScienceFiction,
+        movies.Drama,
+        ]
     }
-}
+
   },
   setup() {
-      movies.$subscribe((state,callback) => {
-        console.log(state)
-      })
   },
 }
 </script>
