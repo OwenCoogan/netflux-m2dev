@@ -6,7 +6,7 @@
 >
   <h1>Comment Section</h1>
   <label class="text-white block w-1/2 m-auto rounded my-2" for="name">Name</label>
-  <input class="text-white block w-1/2 m-auto rounded my-2"
+  <input class="text-black block w-1/2 m-auto rounded my-2"
     id="name"
     v-model="name"
     type="text"
@@ -14,7 +14,7 @@
     required
   >
   <label class="text-white block w-1/2 m-auto rounded my-2" for="age">Comment</label>
-  <input class="text-white block w-1/2 m-auto my-2"
+  <input class="text-black block w-1/2 m-auto my-2"
     v-model="comment"
     type="text"
     required
@@ -25,7 +25,7 @@
   >
 </form>
 <div>
-  <p v-for="comment in comments" v-bind="comment.FormComment">{{comment.comment}}</p>
+  <p v-for="comment in comments" v-bind="comment">{{comment.comment}}</p>
 </div>
 </template>
 <script>
