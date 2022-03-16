@@ -59,6 +59,7 @@ export default {
         movies.incrementPage()
         setTimeout(() => {
         window.scrollTo(0, 0);
+        this.loading = false;
         }, 2000);
         }
       }
