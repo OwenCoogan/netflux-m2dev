@@ -2,7 +2,7 @@
 <div v-if="this.film !=null" class="container mx-auto pt-20">
   <div class="grid grid-cols-3 gap-10 flex-row">
     <div>
-      <img :src="this.film.image.original" :alt="this.film.name">
+      <img :src="this.film.image.original"  :alt="this.film.name">
     </div>
     <div class="flex flex-col col-span-2 pt-4">
       <h2 class="text-5xl font-bold pb-14" >{{this.film.name}}</h2>
@@ -18,7 +18,7 @@
         <p v-if="this.episodesinf.number !=null">{{this.episodesinf.number}} episodes </p>
         </div>
         <div>
-          <h4 class="text-2xl text-left font-bold py-1.5">Summary :</h4>
+          <h4 class="text-2xl text-left font-bold py-2.5 pt-6">Summary :</h4>
           {{this.film.summary}}
         </div>
       </div>
